@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        div.square {
+            color: #00ff7f;
+            background-color: black;
+            padding: 10px;
+            margin: 10px;
+            border: solid darkgreen 5px;
+            border-radius: 3px;
+            width: 60px;
+            height: 60px;
+            float: left;
+            font-size: 320%;
+            text-align: center;
+            font-weight: bold;
+            font-family: helvetica;
+        }
+
+        div.first {
+            clear: left;
+        }
+    </style>
+</head>
+<body>
+    <div id="game"></div>
+    <button onclick="startGame()">Start</button>
+
+    <script>
+        let gameModel;
+
+        startGame();
+        function show() {
+            document.getElementById('game').innerHTML =
+                gameModel.numbers.map((n, i) => `
+                                <div class="square ${i % 3 === 0 ? 'first' : ''}" onclick="play(${i})">${n}</div>
+                            `).join('');
+        }
+
+        async function startGame() {
+            let response = await axios.get('/api/game');
+            gameModel = response.data;
+            console.log(gameModel);
+            show();
+        }
+
+        async function readGame(gameId) {
+            let response = await axios.get('/api/game/' + gameId);
+            gameModel = response.data;
+            console.log(gameModel);
+            show();
+        }
+
+        async function play(index) {
+            const paramObj = { "index": index, "gameId": gameModel.id };
+            console.log(paramObj);
+            let response = await axios.post('/api/game', paramObj);
+            gameModel = response.data;
+            console.log(gameModel);
+            show();
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberPuzzleWeb.API", "NumberPuzzleWeb\NumberPuzzleWeb.API.csproj", "{27336DC9-1E99-465A-BA0E-AD9C03185A42}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10 Infrastructure", "10 Infrastructure", "{91B4BBDD-132B-42AE-945D-1C4BF5581E1C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "40 Core", "40 Core", "{AD8701F2-6D75-47A9-BE42-EBF6FF5D0070}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "90 Test", "90 Test", "{3DC8F315-201B-4970-86BE-6130F2EC8BBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberPuzzleWeb.Core", "NumberPuzzleWeb.Core\NumberPuzzleWeb.Core.csproj", "{5562AC8B-192D-4F22-A31A-D7887589488C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberPuzzleWeb.UnitTest", "NumberPuzzleWeb.UnitTest\NumberPuzzleWeb.UnitTest.csproj", "{26CE2C51-C2F3-4796-8EB2-00B9ABBF7D61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberPuzzleWeb.Infrastructure.DataAccess", "NumberPuzzleWeb.Infrastructure.DataAccess\NumberPuzzleWeb.Infrastructure.DataAccess.csproj", "{9408BF07-743E-44A8-A781-993387A172B5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27336DC9-1E99-465A-BA0E-AD9C03185A42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27336DC9-1E99-465A-BA0E-AD9C03185A42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27336DC9-1E99-465A-BA0E-AD9C03185A42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27336DC9-1E99-465A-BA0E-AD9C03185A42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5562AC8B-192D-4F22-A31A-D7887589488C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5562AC8B-192D-4F22-A31A-D7887589488C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5562AC8B-192D-4F22-A31A-D7887589488C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5562AC8B-192D-4F22-A31A-D7887589488C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26CE2C51-C2F3-4796-8EB2-00B9ABBF7D61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26CE2C51-C2F3-4796-8EB2-00B9ABBF7D61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26CE2C51-C2F3-4796-8EB2-00B9ABBF7D61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26CE2C51-C2F3-4796-8EB2-00B9ABBF7D61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9408BF07-743E-44A8-A781-993387A172B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9408BF07-743E-44A8-A781-993387A172B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9408BF07-743E-44A8-A781-993387A172B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9408BF07-743E-44A8-A781-993387A172B5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{27336DC9-1E99-465A-BA0E-AD9C03185A42} = {91B4BBDD-132B-42AE-945D-1C4BF5581E1C}
+		{5562AC8B-192D-4F22-A31A-D7887589488C} = {AD8701F2-6D75-47A9-BE42-EBF6FF5D0070}
+		{26CE2C51-C2F3-4796-8EB2-00B9ABBF7D61} = {3DC8F315-201B-4970-86BE-6130F2EC8BBC}
+		{9408BF07-743E-44A8-A781-993387A172B5} = {91B4BBDD-132B-42AE-945D-1C4BF5581E1C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1B76F7BE-6231-479B-97D5-78FF4994A6C3}
+	EndGlobalSection
+EndGlobal
