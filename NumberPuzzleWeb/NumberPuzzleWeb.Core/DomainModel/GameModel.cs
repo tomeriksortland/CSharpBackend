@@ -1,27 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace NumberPuzzleWeb.Core.DomainModel
 {
-    public class GameModel : BaseEntity
+    public class GameModel : BaseModel
     {
         private readonly int[] _numbers;
         private readonly Random _random;
+
         public int PlayCount { get; private set; }
-        public bool IsSolved => Enumerable.Range(0, _numbers.Length - 1)
-                                          .All(i => _numbers[i] == i + 1);
 
-        public char[] Numbers => Enumerable.Range(0, _numbers.Length)
-                                           .Select(i => this[i])
-                                           .ToArray();
+        public bool IsSolved => Enumerable.Range(0, _numbers.Length - 1).All(i => _numbers[i] == i + 1);
 
-        public GameModel(Guid id, int playCount, int[] numbers = null) : base(id)
-        {
-            PlayCount = playCount;
-            _numbers = (int[])numbers.Clone();
-        }
+        public char[] Numbers => Enumerable.Range(0, _numbers.Length).Select(i => this[i]).ToArray();
 
         public GameModel(int[] numbers = null)
         {
