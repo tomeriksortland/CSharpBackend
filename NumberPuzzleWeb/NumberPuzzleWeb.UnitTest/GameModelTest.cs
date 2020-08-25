@@ -19,5 +19,7 @@ namespace NumberPuzzleWeb.Core
             var gameModel = new GameModel(new []{1,2,3,4,5,6,7,8,0});
             Assert.AreEqual(true, gameModel.IsSolved);
         }
+
+
     }
 }
