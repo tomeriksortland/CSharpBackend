@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="content"></div>
+<script>
+    var contentDiv = document.getElementById("content");
+    var html;
+
+    show();
+    function show() {
+    html = `
+
+            <h2>Skriv inn navn her: </h2>
+            <input type="text" id="nameInput" placeholder="Navn"></input>
+            <h2>Skriv Epost her: </h2>
+            <input type="text" id="emailInput" placeholder="Epost"></input>
+            <button onclick="Subscribe()">Meld meg på!</button>
+           `;
+
+    contentDiv.innerHTML = html;
+    }
+
+    async function Subscribe() {
+        var nameInput = document.getElementById("nameInput").value.toString();
+        var emailInput = document.getElementById("emailInput").value.toString();
+
+        var response = await axios.post("/api/Subscribe", { Name : nameInput, Email : emailInput });
+        console.log(response.data);
+
+    }
+
+    
+    
+</script>
+</body>
+</html>
