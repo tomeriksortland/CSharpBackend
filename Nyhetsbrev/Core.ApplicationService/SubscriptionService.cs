@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Domain.Model;
 using Core.Domain.Services;
 using Core.DomainModel;
 using Core.DomainServices;
@@ -24,7 +25,9 @@ namespace Core.ApplicationService
             var subscription = new Subscription(request.Name, request.Email);
             var isCreated = await _subscriptionRepository.Create(subscription);
             if (!isCreated) return false;
-            var email = new ConfirmSubscriptionEmail(request.Email, "tomerik@getacademy.no", subscription.VerificationCode);
+            var url = $"https://localhost:44340/index.html?email={subscription.Email}&code={subscription.VerificationCode}";
+            var text = $"Hello {request.Name}! <a href=\"{url}\">Click here to confirm subscription!";
+            var email = new Email(request.Email, "tomerik@getacademy.no", "confrim subscription", text);
             var isSent = await _emailService.Send(email);
             return isSent;
 

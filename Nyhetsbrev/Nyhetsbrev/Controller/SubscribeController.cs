@@ -28,6 +28,13 @@ namespace Nyhetsbrev.Controller
             return await _subscriptionService.Subscribe(subscription);
         }
 
+        [HttpPatch]
+        public async Task<bool> Verify(ViewModel viewModel)
+        {
+            var subscription = new Subscription {Email = viewModel.Email, VerificationCode = viewModel.VerificationCode};
+            return await _subscriptionService.Verify(subscription);
+        }
+
 
     }
 }
