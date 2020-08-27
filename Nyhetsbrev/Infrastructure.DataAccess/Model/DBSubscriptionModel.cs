@@ -4,15 +4,15 @@ using System.Text;
 
 namespace Infrastructure.DataAccess.Model
 {
-    public class DBModel
+    public class DbSubscriptionModel
     {
-        public string Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public bool Active { get; set; }
         public string VerificationCode { get; set; }
 
-        public DBModel(string id, string name, string email, bool active, string verificationCode)
+        public DbSubscriptionModel(Guid id, string name, string email, bool active, string verificationCode)
         {
             Id = id;
             Name = name;
@@ -21,7 +21,7 @@ namespace Infrastructure.DataAccess.Model
             VerificationCode = verificationCode;
         }
 
-        public DBModel()
+        public DbSubscriptionModel()
         {
             
         }

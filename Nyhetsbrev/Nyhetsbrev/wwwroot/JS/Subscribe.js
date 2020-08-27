@@ -26,7 +26,10 @@ function show() {
 async function Subscribe() {
     var nameInput = document.getElementById("nameInput").value.toString();
     var emailInput = document.getElementById("emailInput").value.toString();
+    var test = window.location.search.substring();
+    console.log(test);
 
     var response = await axios.post("/api/Subscribe", { Name: nameInput, Email: emailInput });
     
+
 }

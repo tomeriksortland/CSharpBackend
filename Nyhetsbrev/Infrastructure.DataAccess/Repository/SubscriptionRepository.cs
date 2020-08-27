@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core.Domain.Model;
@@ -31,19 +32,37 @@ namespace Infrastructure.DataAccess
 
         
 
-        public Task<Subscription> ReadByEmail(string email)
+        public async Task<Subscription> ReadByEmail(string email)
         {
-            throw new NotImplementedException();
+            await using var conn = new SqlConnection(_connectionString);
+            const string select =
+                "SELECT Id, Name, Email, Active, VerificationCode FROM Subscription WHERE Email = @Email";
+            var result = await conn.QueryAsync<DbSubscriptionModel>(select, new {Email = email});
+            var dbModel = result.SingleOrDefault();
+            var mapToDomain = MapToDomain(dbModel);
+            return mapToDomain;
         }
 
-        public Task<bool> Update(Subscription subscription)
+        
+
+        public async Task<bool> Update(Subscription subscription)
         {
-            throw new NotImplementedException();
+            await using var conn = new SqlConnection(_connectionString);
+            const string update = 
+                "UPDATE Subscription SET Id=@Id, Name=@Name, Email=@Email, Active=@Active, VerificationCode=@VerificationCode WHERE Id=@Id";
+            var dbSubscriptionModel = MapToDB(subscription);
+            var rowsAffected = await conn.ExecuteAsync(update, dbSubscriptionModel);
+            return rowsAffected == 1;
         }
 
-        private DBModel MapToDB(Subscription subscription)
+        private DbSubscriptionModel MapToDB(Subscription subscription)
         {
-            return new DBModel(subscription.Id.ToString(), subscription.Name, subscription.Email, subscription.Active, subscription.VerificationCode);
+            return new DbSubscriptionModel(subscription.Id.Value, subscription.Name, subscription.Email, subscription.Active, subscription.VerificationCode);
+        }
+
+        private Subscription MapToDomain(DbSubscriptionModel dbModel)
+        {
+            return new Subscription(dbModel.Name, dbModel.Email, dbModel.VerificationCode, dbModel.Id);
         }
     }
 }
