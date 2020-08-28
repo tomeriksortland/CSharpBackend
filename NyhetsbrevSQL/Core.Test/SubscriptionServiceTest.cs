@@ -16,7 +16,7 @@ namespace Core.Test
         [Test]
         public async Task TestSubscriptionOk()
         {
-            // arrange
+            
             var emailServiceMock = new Mock<IEmailService>();
             var subscriptionRepoMock = new Mock<ISubscriptionRepository>();
             emailServiceMock
@@ -27,11 +27,11 @@ namespace Core.Test
                 .ReturnsAsync(true);
             var service = new SubscriptionService(emailServiceMock.Object, subscriptionRepoMock.Object);
 
-            //Act
+            
             var subscription = new Subscription("Tom Erik", "tomerik@getacademy.no");
             var subscribeIsSuccess = await service.Subscribe(subscription);
 
-            //Assert
+            
             Assert.IsTrue(subscribeIsSuccess);
             emailServiceMock.Verify(es=>es.Send(It.Is<Email>(e=>e.To == "tomerik@getacademy.no")));
             subscriptionRepoMock.Verify(sr=>sr.Create(It.Is<Subscription>(s=>s.Email == "tomerik@getacademy.no")));

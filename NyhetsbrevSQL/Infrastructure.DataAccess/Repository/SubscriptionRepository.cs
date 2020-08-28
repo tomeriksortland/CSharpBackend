@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Core.Domain.Model;
 using Core.DomainModel;
@@ -49,7 +46,7 @@ namespace Infrastructure.DataAccess
         {
             await using var conn = new SqlConnection(_connectionString);
             const string update = 
-                "UPDATE Subscription SET Id=@Id, Name=@Name, Email=@Email, Active=@Active, VerificationCode=@VerificationCode WHERE Id=@Id";
+                "UPDATE Subscription SET Active=@Active WHERE Id=@Id";
             var dbSubscriptionModel = MapToDB(subscription);
             var rowsAffected = await conn.ExecuteAsync(update, dbSubscriptionModel);
             return rowsAffected == 1;
