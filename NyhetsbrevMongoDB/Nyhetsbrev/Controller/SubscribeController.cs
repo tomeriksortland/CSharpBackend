@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.ApplicationService;
+using Core.Domain.Services;
 using Core.DomainModel;
-using Infrastructure.DataAccess.ViewModel;
+using Infrastructure.DataAccess.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,9 +15,9 @@ namespace Nyhetsbrev.Controller
     [ApiController]
     public class SubscribeController : ControllerBase
     {
-        private readonly SubscriptionService _subscriptionService;
+        private readonly ISubscriptionService _subscriptionService;
 
-        public SubscribeController(SubscriptionService subscriptionService)
+        public SubscribeController(ISubscriptionService subscriptionService)
         {
             _subscriptionService = subscriptionService;
         }
@@ -31,8 +32,8 @@ namespace Nyhetsbrev.Controller
         [HttpPatch]
         public async Task<bool> Verify(ViewModel viewModel)
         {
-            var subscription = new Subscription {Email = viewModel.Email, VerificationCode = viewModel.VerificationCode};
-            return await _subscriptionService.Verify(subscription);
+            var subscription = new Subscription { Email = viewModel.Email, VerificationCode = viewModel.VerificationCode };
+                return await _subscriptionService.Verify(subscription);
         }
 
 

@@ -1,65 +1,40 @@
-﻿using System.Data.SqlClient;
-using System.Linq;
-using System.Threading.Tasks;
-using Core.Domain.Model;
+﻿using System.Threading.Tasks;
 using Core.DomainModel;
 using Core.DomainServices;
-using Dapper;
-using Infrastructure.DataAccess.Model;
+using MongoDB.Driver;
 
 namespace Infrastructure.DataAccess
 {
+    
     public class SubscriptionRepository : ISubscriptionRepository
     {
-        private readonly string _connectionString;
+        private MongoClient dbClient = new MongoClient("mongodb://tomerik:<tomeriksortland>@testcluster-shard-00-00.srqwt.azure.mongodb.net:27017,testcluster-shard-00-01.srqwt.azure.mongodb.net:27017,testcluster-shard-00-02.srqwt.azure.mongodb.net:27017/<NewsletterDB>?ssl=true&replicaSet=atlas-11gv0r-shard-0&authSource=admin&retryWrites=true&w=majority");
+        private string db = "NewsletterDB";
 
-        public SubscriptionRepository(ConnectionString connectionString)
-        {
-            _connectionString = connectionString.ConnectionValue;
-        }
         public async Task<bool> Create(Subscription subscription)
         {
-            await using var conn = new SqlConnection(_connectionString);
-            const string insert = 
-                "INSERT INTO Subscription (Id, Name, Email, Active, VerificationCode) VALUES (@Id, @Name, @Email, @Active, @VerificationCode)";
-            var dbGameModel = MapToDB(subscription);
-            var rowsAffected = await conn.ExecuteAsync(insert, dbGameModel);
-            return rowsAffected == 1;
+            var database = dbClient.GetDatabase(db);
+            var collection = database.GetCollection<object>("Subscriptions");
+            await collection.InsertOneAsync(subscription);
+            return true;
         }
 
         
 
         public async Task<Subscription> ReadByEmail(string email)
         {
-            await using var conn = new SqlConnection(_connectionString);
-            const string select =
-                "SELECT Id, Name, Email, Active, VerificationCode FROM Subscription WHERE Email = @Email";
-            var result = await conn.QueryAsync<DbSubscriptionModel>(select, new {Email = email});
-            var dbModel = result.SingleOrDefault();
-            var mapToDomain = MapToDomain(dbModel);
-            return mapToDomain;
+            //var database = dbClient.GetDatabase(db);
+            //var collection = database.GetCollection<object>("Subscriptions");
+            //var find = await collection.FindAsync(f=>f.Email == email);
+
+            return null;
         }
 
         
 
         public async Task<bool> Update(Subscription subscription)
         {
-            await using var conn = new SqlConnection(_connectionString);
-            const string update = 
-                "UPDATE Subscription SET Active=@Active WHERE Id=@Id";
-            var dbSubscriptionModel = MapToDB(subscription);
-            var rowsAffected = await conn.ExecuteAsync(update, dbSubscriptionModel);
-            return rowsAffected == 1;
-        }
-
-        private DbSubscriptionModel MapToDB(Subscription subscription)
-        {
-            return new DbSubscriptionModel(subscription.Id.Value, subscription.Name, subscription.Email, subscription.Active, subscription.VerificationCode);
-        }
-
-        private Subscription MapToDomain(DbSubscriptionModel dbModel)
-        {
-            return new Subscription(dbModel.Name, dbModel.Email, dbModel.VerificationCode, dbModel.Id);
+            return false;
         }
     }
 }

@@ -2,24 +2,30 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Infrastructure.DataAccess.ViewModel
+namespace Infrastructure.DataAccess.Model
 {
     public class ViewModel
     {
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string VerificationCode { get; set; }
+        public string Name { get; }
+        public string Email { get; }
+        public string VerificationCode { get; }
 
-        public ViewModel(string name, string email, string verificationCode = null)
+        public ViewModel()
+        {
+            
+        }
+
+        public ViewModel(string name, string email, string verificationCode)
         {
             Name = name;
             Email = email;
             VerificationCode = verificationCode;
         }
 
-        public ViewModel()
+        public ViewModel(string name, string email)
         {
-            
+            Name = name;
+            Email = email;
         }
     }
 }

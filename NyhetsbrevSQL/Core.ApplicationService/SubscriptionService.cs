@@ -9,7 +9,7 @@ using Core.DomainServices;
 
 namespace Core.ApplicationService
 {
-    public class SubscriptionService
+    public class SubscriptionService : ISubscriptionService
     {
         private readonly IEmailService _emailService;
         private readonly ISubscriptionRepository _subscriptionRepository;

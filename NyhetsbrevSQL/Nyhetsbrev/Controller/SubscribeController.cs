@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.ApplicationService;
+using Core.Domain.Services;
 using Core.DomainModel;
 using Infrastructure.DataAccess.ViewModel;
 using Microsoft.AspNetCore.Http;
@@ -14,9 +15,9 @@ namespace Nyhetsbrev.Controller
     [ApiController]
     public class SubscribeController : ControllerBase
     {
-        private readonly SubscriptionService _subscriptionService;
+        private readonly ISubscriptionService _subscriptionService;
 
-        public SubscribeController(SubscriptionService subscriptionService)
+        public SubscribeController(ISubscriptionService subscriptionService)
         {
             _subscriptionService = subscriptionService;
         }
