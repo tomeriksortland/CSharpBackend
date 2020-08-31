@@ -1,10 +1,8 @@
-using System.Runtime.InteropServices.ComTypes;
+
 using System.Threading.Tasks;
-using Core.ApplicationService;
-using Core.Domain.Model;
-using Core.Domain.Services;
-using Core.DomainModel;
-using Core.DomainServices;
+using ApplicationService;
+using DomainModel;
+using DomainServices;
 using Moq;
 using NUnit.Framework;
 

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Infrastructure.DataAccess.Model
+namespace DataAccess.Model
 {
     public class DbSubscriptionModel
     {

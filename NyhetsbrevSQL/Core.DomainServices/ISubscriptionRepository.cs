@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Core.DomainModel;
+﻿
 
-namespace Core.DomainServices
+using System.Threading.Tasks;
+using DomainModel;
+
+namespace DomainServices
 {
     public interface ISubscriptionRepository
     {

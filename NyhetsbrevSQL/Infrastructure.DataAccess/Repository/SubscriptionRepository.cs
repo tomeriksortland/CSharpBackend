@@ -1,13 +1,12 @@
 ﻿using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
-using Core.Domain.Model;
-using Core.DomainModel;
-using Core.DomainServices;
 using Dapper;
-using Infrastructure.DataAccess.Model;
+using DataAccess.Model;
+using DomainModel;
+using DomainServices;
 
-namespace Infrastructure.DataAccess
+namespace DataAccess.Repository
 {
     public class SubscriptionRepository : ISubscriptionRepository
     {

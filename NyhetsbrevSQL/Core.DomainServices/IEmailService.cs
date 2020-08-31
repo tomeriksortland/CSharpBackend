@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Core.Domain.Model;
+﻿using System.Threading.Tasks;
+using DomainModel;
 
-namespace Core.Domain.Services
+namespace DomainServices
 {
     public interface IEmailService
     {

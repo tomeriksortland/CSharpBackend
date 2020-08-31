@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Core.ApplicationService;
-using Core.Domain.Services;
-using Core.DomainModel;
-using Infrastructure.DataAccess.ViewModel;
-using Microsoft.AspNetCore.Http;
+﻿using System.Threading.Tasks;
+using DataAccess.Model;
+using DomainModel;
+using DomainServices;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Nyhetsbrev.Controller
+namespace API.Controller
 {
     [Route("api/Subscribe")]
     [ApiController]

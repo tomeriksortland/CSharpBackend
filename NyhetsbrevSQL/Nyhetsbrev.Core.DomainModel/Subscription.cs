@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Core.DomainModel
+namespace DomainModel
 {
     public class Subscription
     {

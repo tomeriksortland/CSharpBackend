@@ -5,8 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MongoDB.Bson" Version="2.11.1" />
-    <PackageReference Include="MongoDB.Driver" Version="2.11.1" />
+    <ProjectReference Include="..\Nyhetsbrev.Core.DomainModel\DomainModel.csproj" />
   </ItemGroup>
 
 </Project>

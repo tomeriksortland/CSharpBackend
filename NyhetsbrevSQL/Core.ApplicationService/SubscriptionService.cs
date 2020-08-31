@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Core.Domain.Model;
-using Core.Domain.Services;
-using Core.DomainModel;
-using Core.DomainServices;
+﻿using System.Threading.Tasks;
+using DomainModel;
+using DomainServices;
 
-namespace Core.ApplicationService
+namespace ApplicationService
 {
     public class SubscriptionService : ISubscriptionService
     {
