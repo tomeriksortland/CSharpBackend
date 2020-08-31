@@ -37,7 +37,7 @@ namespace Nyhetsbrev
 
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
-            services.AddScoped<SubscriptionService>();
+            services.AddScoped<ISubscriptionService, SubscriptionService>();
             services.AddControllers();
         }
 
